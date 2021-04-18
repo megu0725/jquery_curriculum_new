@@ -90,6 +90,24 @@
       // ・セレクトボックスをクリックする。
       // ・セレクトボックスのvalueとliのdata-category-typeが一致しているものをだけ表示させる。
       // ・Allを選択した場合のみ全てのliを表示させる。
+      $(function(){
+        $('.select').change(function(){
+          var selVal = $(this).val();
+          if(selVal=='all'){
+            $('ul.list li').each(function(){
+              $(this).show();
+            });
+          } else {
+            $('ul.list li').each(function(){
+              if($(this).data('category-type') == selVal){
+                $(this).show();
+              } else {
+                $(this).hide();
+              }
+            });
+          }
+        });
+      });
       // [使うメソッド]
       // .show() 要素を表示させる
       // .hide() 要素を隠す
